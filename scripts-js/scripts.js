@@ -6,7 +6,7 @@ const loadData = () => {
 
 }
 function callData(datas) {
-
+   datas = datas.slice(0, 6)
    let mainContainer = document.getElementById('main-container')
    for (const data of datas) {
       console.log(data)
