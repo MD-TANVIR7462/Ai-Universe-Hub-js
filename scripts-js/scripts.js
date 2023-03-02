@@ -1,17 +1,22 @@
-const loadData = (pera) => {
+
+const loadData = (value) => {
    let url = [`https://openapi.programming-hero.com/api/ai/tools`]
    fetch(url)
       .then(res => res.json())
-      .then(data => callData(data.data.tools, pera))
+      .then(data => callData(data.data.tools, value))
 
 }
-function callData(datas, pera) {
-   if (pera === true) {
+function callData(datas, value) {
+
+   //-- when click (show more) btn then the value perameters value will be true then if statement will works otherwise else statement will continue by defult-------- ***
+
+   if (value === true) {
+      spinerFunction(true)
       const main = document.getElementById('main-container')
       main.innerHTML = ""
       const seeMoreBtn = document.getElementById('see-more-btn')
       seeMoreBtn.classList.add('d-none')
-      const spiner = document.getElementById('')
+     
       datas = datas
    }
    else {
@@ -56,10 +61,30 @@ function callData(datas, pera) {
       mainContainer.appendChild(divs)
 
    };
+   // ----------for stop spinerFunction-------
+   
+   spinerFunction(false)
 }
 
+//**--- arrow function for see more button-----**
 const ShowAllData = () => {
    loadData(true)
 
 }
+
+//---- arrow function for spiner------
+const spinerFunction = (values) =>{
+   if(values === true){
+      const spiner = document.getElementById('spiner')
+      spiner.classList.remove('d-none')
+   }
+
+   else{ const spiner = document.getElementById('spiner')
+   spiner.classList.add('d-none')
+
+   }
+    
+
+}
+
 loadData()
