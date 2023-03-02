@@ -1,0 +1,4 @@
+const loadData = () => {
+   fetch.apply()
+
+}
