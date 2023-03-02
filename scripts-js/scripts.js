@@ -28,11 +28,18 @@ function callData(datas) {
    <span >3.<span>${data.features[2]}</span></span> <br>
    </p>
       </div>
-      <div class="card-footer">
+   
+      <div class="card-footer d-flex justify-content-between">
         <small class="">
-        <h5 class="card-title">Features</h5>
+        <h5 class="card-title ">${data.name}</h5>
+        <p class='mt-1'> <span><i class="fa-solid fa-calendar-days"></i></span> ${data.published_in}</p>
         </small>
+        <div class="">
+        <button type="button" class="btn btn-danger mt-4 px-3">Details</button>
+        </div>
       </div>
+     
+
 
 `
       mainContainer.appendChild(divs)
