@@ -1,12 +1,23 @@
-const loadData = () => {
+const loadData = (pera) => {
    let url = [`https://openapi.programming-hero.com/api/ai/tools`]
    fetch(url)
       .then(res => res.json())
-      .then(data => callData(data.data.tools))
+      .then(data => callData(data.data.tools, pera))
 
 }
-function callData(datas) {
-   datas = datas.slice(0, 6)
+function callData(datas, pera) {
+   if (pera === true) {
+      const main = document.getElementById('main-container')
+      main.innerHTML = ""
+      const seeMoreBtn = document.getElementById('see-more-btn')
+      seeMoreBtn.classList.add('d-none')
+      const spiner = document.getElementById('')
+      datas = datas
+   }
+   else {
+      datas = datas.slice(0, 6)
+   }
+
    let mainContainer = document.getElementById('main-container')
    for (const data of datas) {
       console.log(data)
@@ -46,4 +57,9 @@ function callData(datas) {
 
    };
 }
-// loadData()
+
+const ShowAllData = () => {
+   loadData(true)
+
+}
+loadData()
