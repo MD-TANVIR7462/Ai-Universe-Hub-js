@@ -7,6 +7,7 @@ const loadData = (value) => {
 
 }
 function callData(datas, value) {
+  
 
    //-- when click (show more) btn then the value perameters value will be true then if statement will works otherwise else statement will continue by defult-------- ***
 
@@ -25,7 +26,7 @@ function callData(datas, value) {
 
    let mainContainer = document.getElementById('main-container')
    for (const data of datas) {
-      console.log(data)
+     
       const divs = document.createElement('div')
       divs.classList.add('col')
       divs.innerHTML = `
@@ -51,13 +52,15 @@ function callData(datas, value) {
         <p class='mt-1'> <span><i class="fa-solid fa-calendar-days"></i></span> ${data.published_in}</p>
         </small>
         <div class="">
-        <button type="button" class="btn btn-danger mt-4 px-3">Details</button>
+        <button type="button" class="btn btn-danger mt-4 px-3"data-bs-toggle="modal" data-bs-target="#exampleModal" >Details</button>
         </div>
       </div>
      
 
 
 `
+
+ 
       mainContainer.appendChild(divs)
 
    };
@@ -72,11 +75,12 @@ const ShowAllData = () => {
 
 }
 
-//---- arrow function for spiner------
+//---- arrow function for spiner--loader------
 const spinerFunction = (values) =>{
    if(values === true){
       const spiner = document.getElementById('spiner')
       spiner.classList.remove('d-none')
+      console.log('im-spining')
    }
 
    else{ const spiner = document.getElementById('spiner')
@@ -86,5 +90,3 @@ const spinerFunction = (values) =>{
     
 
 }
-
-loadData()
