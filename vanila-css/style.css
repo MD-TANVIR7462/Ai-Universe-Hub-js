@@ -22,3 +22,15 @@ body {
    font-size: 11px;
    font-weight: bold;
 }
+.own-li{
+   font-size: 9px;
+   font-weight: 400;
+}
+.own-css-for-position{
+   width: 35%;
+   position: absolute;
+   right: 8%;
+   top: 7%;
+   font-size: 12px;
+   
+}

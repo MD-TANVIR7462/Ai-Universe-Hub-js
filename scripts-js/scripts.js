@@ -93,6 +93,31 @@ const spinerFunction = (values) =>{
 
 }
 
+
+
+// ----------------acuracy function-----------
+
+const acuracy=(acuPoint)=>{
+  let accuracyP = document.getElementById('acuracy')
+   let cp =acuPoint.accuracy.score
+     
+      if(cp === null){
+      
+         accuracyP.classList.add('d-none')
+      }
+      else{
+      accuracyP.classList.remove('d-none')
+       const x= document.getElementById('acuracy-point')
+       x.innerText=cp
+
+
+
+      }
+
+
+   
+ } 
+
 // -----------function for modal image-card---------
 const modal = (id) =>{
    
@@ -103,7 +128,8 @@ const modal = (id) =>{
    .then(data => picture(data.data))
 } 
 const picture = (datass)=>{
-  console.log(datass)
+   FacebookAi(datass)
+   acuracy(datass)
   
    const imgDiv = document.getElementById('img-div')
    imgDiv.innerHTML = `
@@ -136,7 +162,7 @@ else{
 
 
 
-if(datass.pricing[0].price === '0' || datass.pricing[0].price === 'No cost'  ){
+if(datass.pricing[0].price === '0' || datass.pricing[0].price === 'No cost'){
  let newValue =  datass.pricing[0].price 
  newValue ="Free of Cost/"
 
@@ -144,13 +170,6 @@ if(datass.pricing[0].price === '0' || datass.pricing[0].price === 'No cost'  ){
 
 
 }
-//  if(datass.pricing === null ){
-//    let newValue = datass.pricing
-   
-//    newValue = "Free of Cost/"
-
-//    pricing.innerText=newValue
-// }
 
 
 else {
@@ -169,7 +188,7 @@ basic.innerText = datass.pricing[0].plan
    //  pricing part of discription card ---------
 
    const pricing2 = document.getElementById('pricing-2')
-   if( datass.pricing[1].price === '0'|| datass.pricing[1].price==='No cost'){
+   if( datass.pricing[1].price === '0'|| datass.pricing[1].price==='No cost' ){
       let newValue =  datass.pricing[0].price 
       newValue ="Free of Cost/"
      
@@ -188,4 +207,65 @@ contact.innerText = datass.pricing[2].price
 // ---------basic part of pricing-----
 const enterprice = document.getElementById('enterprice')
 enterprice.innerText= datass.pricing[2].plan
+
+
+// -------------features and integration div-----------
+// --------------------features-part------------
+const features =  document.getElementById('li-1')
+features.innerText = datass.features[1].feature_name
+const features2 =  document.getElementById('li-2')
+features2.innerText = datass.features[2].feature_name
+const features3 =  document.getElementById('li-3')
+features3.innerText = datass.features[3].feature_name
+
+
+
+//------------- modal -integrations part-------------
+
+ 
+const features4 =  document.getElementById('li-4')
+features4.innerText = datass.integrations[0]
+const features5 =  document.getElementById('li-5')
+if(datass.integrations[1] == undefined){
+   features5.innerText = 'No data Found'
+}
+else{
+features5.innerText = datass.integrations[1]}
+
+
+const features6 =  document.getElementById('li-6')
+
+if(datass.integrations[2]== undefined){
+   features6.innerText = 'No data Found'
+}
+else{
+   features6.innerText = datass.integrations[2]
+}
+
+
+
+
+}
+
+function FacebookAi(nullApis){
+   const x = nullApis.pricing
+//    console.log(nullApis)
+// console.log(x)
+const pricing = document.getElementById('pricing')
+const pricing2 = document.getElementById('pricing-2')
+const enterprice = document.getElementById('enterprice')
+if(x == null){
+console.log('im a null property')
+
+   let newValue ='No data found in api'
+  
+   pricing.innerText = newValue
+  
+   pricing2.innerText=newValue
+  
+enterprice.innerText = newValue
+
+}
+
+
 }

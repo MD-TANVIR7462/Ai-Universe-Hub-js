@@ -33,7 +33,7 @@
    </header>
    <!------ Main-Part-------->
 
-   <main class="container mt-4  ">
+   <main class="container mt-4 own-container  ">
 
       <!-- ------------main div for cards-------- -->
       <div class="row row-cols-1 row-cols-md-3 g-4 " id="main-container">
@@ -54,12 +54,12 @@
                   
                     
                      <i type="" class="btn-close p-3 ms-auto
-                      bg-danger-subtle   "fa-sharp fa-solid fa-xmark" " data-bs-dismiss="modal" aria-label=""></i>
+                      bg-danger-subtle"fa-sharp fa-solid fa-xmark" " data-bs-dismiss="modal" ></i>
                     
                
 
                  
-                  <div class=" d-md-flex justify-content-between ">
+                  <div class=" d-md-flex  ">
                      <!----- modal details card ----->
 
                      <div class="card ms-md-5 my-4 mx-1 p-2 bg-danger-subtle border- border-danger " id="details-div" >
@@ -90,16 +90,16 @@
                           </div>
                           <div class="d-flex justify-content-between  mt-2">
                            <div>
-                                <p class="fw-bolder">Features</p>
-                                <li id="li-1"></li>
-                                <li id="li-2"></li>
-                                <li id="li-3"></li>
+                                <p class="fw-bolder mb-1" id="p-container">Features</p>
+                                <li class="own-li"  id="li-1"></li>
+                                <li class="own-li"  id="li-2"></li>
+                                <li  class="own-li" id="li-3"></li>
                            </div>
                            <div>
-                              <p class="fw-bolder">Integrations</p>
-                              <li></li>
-                              <li></li>
-                              <li></li>
+                              <p class="fw-bolder mb-1">Integrations</p>
+                              <li  class="own-li" id="li-4"></li>
+                              <li class="own-li"  id="li-5"></li>
+                              <li  class="own-li" id="li-6"></li>
                            </div>
                           </div>
 
@@ -112,10 +112,12 @@
                         
                          <div class="card  ms-md-2 my-4 me-md-5 " id="details-div" >
                            <div class="card-body">
+                              <div class="own-css-for-position "><p id="acuracy" class="bg-danger px-1 py-1 border-1 border-secondary fw-bold  rounded-3 text-center text-light"> <span id="acuracy-point"></span>% accuracy</p></div>
                               <div id="img-div" class="mb-5">
+                                 
 
                               </div>
-                             <p >
+                             <p>
 
                                  <span class="own-css mt-2 mb-1" id="input-Q"> </span> 
                                  <span class="own-css-2" id="output"></span>
@@ -135,7 +137,7 @@
                </div>
             </div>
          </div>
-      </div>
+      <!-- </div> -->
 
 
       <!-- ------------------------spiner div ------------------>
@@ -149,7 +151,7 @@
    <!------ footer-Part-------->
    <footer class="my-4">
       <div class="d-flex justify-content-center">
-         <button onclick="ShowAllData()" type="button" class="btn btn-danger" id="see-more-btn">See More</button>
+         <button onclick="ShowAllData()" type="button" class="btn btn-danger mt-5" id="see-more-btn">See More</button>
       </div>
    </footer>
 
