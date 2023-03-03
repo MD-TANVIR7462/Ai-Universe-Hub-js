@@ -82,7 +82,7 @@ const spinerFunction = (values) =>{
    if(values === true){
       const spiner = document.getElementById('spiner')
       spiner.classList.remove('d-none')
-      console.log('im-spining')
+    
    }
 
    else{ const spiner = document.getElementById('spiner')
@@ -103,20 +103,27 @@ const modal = (id) =>{
    .then(data => picture(data.data))
 } 
 const picture = (datass)=>{
-   console.log(datass
-      )
-   console.log(datass.image_link)
+  console.log(datass)
+  
    const imgDiv = document.getElementById('img-div')
    imgDiv.innerHTML = `
    <img src="${datass.image_link[0]}" class="card-img-top" >
    `
 
    // ---------set the img card input output example--------
+if(datass.input_output_examples === null  ){
 
+   const inputEXP = document.getElementById('input-Q')
+  inputEXP.innerText='Can you give any example?'
+  const outputEXP = document.getElementById('output')
+  outputEXP.innerText = 'No! Not Yet! Take a break!!!'
+
+}
+else{
   const inputEXP = document.getElementById('input-Q')
   inputEXP.innerText=datass.input_output_examples[0].input
   const outputEXP = document.getElementById('output')
-  outputEXP.innerText = datass.input_output_examples[0].output
+  outputEXP.innerText = datass.input_output_examples[0].output}
 
     // ---------set the discription-card discription ($-BOx) and (Features) --------
 
@@ -126,15 +133,50 @@ const picture = (datass)=>{
 
    //  pricing part of discription card---------
    const pricing = document.getElementById('pricing')
-pricing.innerText = datass.pricing[0].price
+
+
+
+if(datass.pricing[0].price === '0' || datass.pricing[0].price === 'No cost'  ){
+ let newValue =  datass.pricing[0].price 
+ newValue ="Free of Cost/"
+
+ pricing.innerText = newValue
+
+
+}
+//  if(datass.pricing === null ){
+//    let newValue = datass.pricing
+   
+//    newValue = "Free of Cost/"
+
+//    pricing.innerText=newValue
+// }
+
+
+else {
+   pricing.innerText = datass.pricing[0].price
+}
+
 
 // ---------basic part of pricing-----
 const basic = document.getElementById('basic')
-basic.innerText = datass.pricing[0].plan
+basic.innerText = datass.pricing[0].plan 
+
+
+
+
 
    //  pricing part of discription card ---------
+
    const pricing2 = document.getElementById('pricing-2')
-pricing2.innerText = datass.pricing[1].price
+   if( datass.pricing[1].price === '0'|| datass.pricing[1].price==='No cost'){
+      let newValue =  datass.pricing[0].price 
+      newValue ="Free of Cost/"
+     
+      pricing2.innerText = newValue
+   }
+else{
+pricing2.innerText = datass.pricing[1].price}
 
 // ---------basic part of pricing-----
 const pro = document.getElementById('pro')
