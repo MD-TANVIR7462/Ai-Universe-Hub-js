@@ -8,7 +8,6 @@ const loadData = (value) => {
 }
 function callData(datas, value) {
   
-
    //-- when click (show more) btn then the value perameters value will be true then if statement will works otherwise else statement will continue by defult-------- ***
 
    if (value === true) {
@@ -51,9 +50,12 @@ function callData(datas, value) {
         <h5 class="card-title ">${data.name}</h5>
         <p class='mt-1'> <span><i class="fa-solid fa-calendar-days"></i></span> ${data.published_in}</p>
         </small>
-        <div class="">
-        <button type="button" class="btn btn-danger mt-4 px-3"data-bs-toggle="modal" data-bs-target="#exampleModal" >Details</button>
-        </div>
+        <div class=" pt-3">
+         <i class="text-danger bg-danger-subtle px-3 py-2 rounded-5  fa-solid fa-arrow-right"  onclick="modal('${data.id}')" 
+         
+         data-bs-toggle="modal" data-bs-target="#exampleModal" > </i>
+         </div>
+        
       </div>
      
 
@@ -88,5 +90,23 @@ const spinerFunction = (values) =>{
 
    }
     
+
+}
+
+// -----------function for modal image-card---------
+const modal = (id) =>{
+   console.log(id)
+   let singleData = [`https://openapi.programming-hero.com/api/ai/tool/${id}`] 
+   
+   fetch (singleData)
+   .then( res => res.json())
+   .then(data => picture(data.data))
+} 
+const picture = (datass)=>{
+   console.log(datass.image_link)
+   const imgDiv = document.getElementById('img-div')
+   imgDiv.innerHTML = `
+   <img src="${datass.image_link[0]}" class="card-img-top" >
+   `
 
 }
