@@ -3,7 +3,7 @@ body {
 }
 
 .own-css{
-   font-size: 12px;
+   font-size: 15px;
    display: flex;
    justify-content: center;
    text-align: center;
@@ -11,10 +11,14 @@ body {
    
 }
 .own-css-2{
-   font-size: 10px;
+   font-size: 13px;
    text-align: center;
    font-weight: 500;
    display: flex ;
    justify-content: center;
    
+}
+.own-div{
+   font-size: 13px;
+   font-weight: bold;
 }

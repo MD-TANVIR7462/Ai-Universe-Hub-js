@@ -103,16 +103,47 @@ const modal = (id) =>{
    .then(data => picture(data.data))
 } 
 const picture = (datass)=>{
-   console.log(datass.input_output_examples[0]
+   console.log(datass
       )
    console.log(datass.image_link)
    const imgDiv = document.getElementById('img-div')
    imgDiv.innerHTML = `
    <img src="${datass.image_link[0]}" class="card-img-top" >
    `
+
+   // ---------set the img card input output example--------
+
   const inputEXP = document.getElementById('input-Q')
   inputEXP.innerText=datass.input_output_examples[0].input
   const outputEXP = document.getElementById('output')
   outputEXP.innerText = datass.input_output_examples[0].output
 
+    // ---------set the discription-card discription ($-BOx) and (Features) --------
+
+    const discription =document.getElementById('discription')
+    discription.innerText=datass.description
+
+
+   //  pricing part of discription card---------
+   const pricing = document.getElementById('pricing')
+pricing.innerText = datass.pricing[0].price
+
+// ---------basic part of pricing-----
+const basic = document.getElementById('basic')
+basic.innerText = datass.pricing[0].plan
+
+   //  pricing part of discription card ---------
+   const pricing2 = document.getElementById('pricing-2')
+pricing2.innerText = datass.pricing[1].price
+
+// ---------basic part of pricing-----
+const pro = document.getElementById('pro')
+pro.innerText = datass.pricing[1].plan
+   //  pricing part of discription card---------
+   const contact = document.getElementById('contact')
+contact.innerText = datass.pricing[2].price
+
+// ---------basic part of pricing-----
+const enterprice = document.getElementById('enterprice')
+enterprice.innerText= datass.pricing[2].plan
 }
