@@ -95,7 +95,7 @@ const spinerFunction = (values) =>{
 
 // -----------function for modal image-card---------
 const modal = (id) =>{
-   console.log(id)
+   
    let singleData = [`https://openapi.programming-hero.com/api/ai/tool/${id}`] 
    
    fetch (singleData)
@@ -103,10 +103,16 @@ const modal = (id) =>{
    .then(data => picture(data.data))
 } 
 const picture = (datass)=>{
+   console.log(datass.input_output_examples[0]
+      )
    console.log(datass.image_link)
    const imgDiv = document.getElementById('img-div')
    imgDiv.innerHTML = `
    <img src="${datass.image_link[0]}" class="card-img-top" >
    `
+  const inputEXP = document.getElementById('input-Q')
+  inputEXP.innerText=datass.input_output_examples[0].input
+  const outputEXP = document.getElementById('output')
+  outputEXP.innerText = datass.input_output_examples[0].output
 
 }
