@@ -129,7 +129,7 @@ const modal = (id) =>{
 } 
 const picture = (datass)=>{
 //  console.log(datass)
-// forNullAi(datass)
+forNullAi(datass)
    acuracy(datass)
   
    const imgDiv = document.getElementById('img-div')
@@ -138,7 +138,6 @@ const picture = (datass)=>{
    `
 
    // ---------set the img card input output example--------
-  
 if(datass.input_output_examples === null  ){
 
    const inputEXP = document.getElementById('input-Q')
@@ -158,14 +157,11 @@ else{
     const discription =document.getElementById('discription')
     discription.innerText=datass.description
 
-   pricing(datass)
-   //  pricing part of discription card---------
-//    const pricing = document.getElementById('pricing')
-// const x = datass.pricing
 
-function pricing(datass){
+   //  pricing part of discription card---------
    const pricing = document.getElementById('pricing')
-   const x = datass.pricing
+const x = datass.pricing
+
 if(datass.pricing[0].price === '0' || datass.pricing[0].price === 'No cost'  ){
  let newValue =  datass.pricing[0].price 
  newValue ="Free of Cost/"
@@ -175,12 +171,10 @@ if(datass.pricing[0].price === '0' || datass.pricing[0].price === 'No cost'  ){
 
 }
 
-// else if new
-
 
 else {
    pricing.innerText = datass.pricing[0].price
-}}
+}
 
 
 // ---------basic part of pricing-----
@@ -223,6 +217,8 @@ const features2 =  document.getElementById('li-2')
 features2.innerText = datass.features[2].feature_name
 const features3 =  document.getElementById('li-3')
 features3.innerText = datass.features[3].feature_name
+const featuresex =  document.getElementById('li-ex')
+featuresex.classList.add('d-none')
 
 
 
@@ -232,6 +228,7 @@ features3.innerText = datass.features[3].feature_name
 const features4 =  document.getElementById('li-4')
 features4.innerText = datass.integrations[0]
 const features5 =  document.getElementById('li-5')
+features5.classList.remove('d-none')
 if(datass.integrations[1] == undefined){
    features5.innerText = 'No data Found'
 }
@@ -240,6 +237,7 @@ features5.innerText = datass.integrations[1]}
 
 
 const features6 =  document.getElementById('li-6')
+features6.classList.remove('d-none')
 
 if(datass.integrations[2]== undefined){
    features6.innerText = 'No data Found'
@@ -266,7 +264,7 @@ const pricing2 = document.getElementById('pricing-2')
 const pro = document.getElementById('pro')
 const enterprice = document.getElementById('enterprice')
 const contact = document.getElementById('contact')
-if(x == null || nullApis.integrations == null){
+if(x == null && nullApis.integrations == null){
 
    const imgDiv = document.getElementById('img-div')
    imgDiv.innerHTML = `
@@ -303,9 +301,9 @@ function  features(fDatas) {
    features2.innerText = fDatas.features[2].feature_name
    const features3 =  document.getElementById('li-3')
    features3.innerText = fDatas.features[3].feature_name 
-   const features4 =  document.getElementById('li-ex') 
-   features4.classList.remove('d-none')
-   features4.innerText = fDatas.features[4].feature_name
+   const featuresex =  document.getElementById('li-ex') 
+   featuresex.classList.remove('d-none')
+   featuresex.innerText = fDatas.features[4].feature_name
 
 }
 
@@ -316,13 +314,9 @@ const integrationF = (integrationF) => {
       document.getElementById('li-6').classList.add('d-none')
    }
 
-  
+   // it's never be declare becouse always when an null property come in this function he will hits the if statement-----(else -never- will be - declare)
 else{
-   document.getElementById('li-4').innerText = 'No data Found'
-   document.getElementById('li-5').classList.remove('d-none')
-   document.getElementById('li-6').classList.remove('d-none')
-
-
+   return'someThing went wrong'
 }
 
 }
