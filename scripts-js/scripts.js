@@ -11,7 +11,7 @@ battonSEE()
    //-- when click (show more) btn then the value perameters value will be true then if statement will works otherwise else statement will continue by defult-------- ***
 function battonSEE (){
    if (value === true) {
-      spinerFunction(true)
+      
       const main = document.getElementById('main-container')
       main.innerHTML = ""
       const seeMoreBtn = document.getElementById('see-more-btn')
@@ -27,7 +27,7 @@ function battonSEE (){
 
    let mainContainer = document.getElementById('main-container')
    for (const data of datas) {
-     
+      
       const divs = document.createElement('div')
       divs.classList.add('col')
       divs.innerHTML = `
@@ -85,6 +85,7 @@ const spinerFunction = (values) =>{
    if(values === true){
       const spiner = document.getElementById('spiner')
       spiner.classList.remove('d-none')
+     
     
    }
 
@@ -344,3 +345,4 @@ const sorted = datas.tools.sort(
 // calling callData function with sorted value and true value
 callData(sorted,true )
 }
+spinerFunction(true)
