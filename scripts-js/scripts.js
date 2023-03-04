@@ -128,7 +128,8 @@ const modal = (id) =>{
    .then(data => picture(data.data))
 } 
 const picture = (datass)=>{
-   FacebookAi(datass)
+//  console.log(datass)
+// forNullAi(datass)
    acuracy(datass)
   
    const imgDiv = document.getElementById('img-div')
@@ -137,6 +138,7 @@ const picture = (datass)=>{
    `
 
    // ---------set the img card input output example--------
+  
 if(datass.input_output_examples === null  ){
 
    const inputEXP = document.getElementById('input-Q')
@@ -156,13 +158,15 @@ else{
     const discription =document.getElementById('discription')
     discription.innerText=datass.description
 
-
+   pricing(datass)
    //  pricing part of discription card---------
+//    const pricing = document.getElementById('pricing')
+// const x = datass.pricing
+
+function pricing(datass){
    const pricing = document.getElementById('pricing')
-
-
-
-if(datass.pricing[0].price === '0' || datass.pricing[0].price === 'No cost'){
+   const x = datass.pricing
+if(datass.pricing[0].price === '0' || datass.pricing[0].price === 'No cost'  ){
  let newValue =  datass.pricing[0].price 
  newValue ="Free of Cost/"
 
@@ -171,10 +175,12 @@ if(datass.pricing[0].price === '0' || datass.pricing[0].price === 'No cost'){
 
 }
 
+// else if new
+
 
 else {
    pricing.innerText = datass.pricing[0].price
-}
+}}
 
 
 // ---------basic part of pricing-----
@@ -247,25 +253,76 @@ else{
 
 }
 
-function FacebookAi(nullApis){
-   const x = nullApis.pricing
-//    console.log(nullApis)
-// console.log(x)
-const pricing = document.getElementById('pricing')
-const pricing2 = document.getElementById('pricing-2')
-const enterprice = document.getElementById('enterprice')
-if(x == null){
-console.log('im a null property')
 
-   let newValue ='No data found in api'
-  
+// -------------function for null api's---------
+
+function forNullAi(nullApis){
+ 
+   const x = nullApis.pricing
+   
+const pricing = document.getElementById('pricing')
+const basic = document.getElementById('basic')
+const pricing2 = document.getElementById('pricing-2')
+const pro = document.getElementById('pro')
+const enterprice = document.getElementById('enterprice')
+const contact = document.getElementById('contact')
+if(x == null || nullApis.integrations == null){
+
+   const imgDiv = document.getElementById('img-div')
+   imgDiv.innerHTML = `
+   <img src="${nullApis.image_link[0]}" class="card-img-top" >
+   `
+
+   let newValue ='Free Of Cost/'
+
    pricing.innerText = newValue
-  
    pricing2.innerText=newValue
+   contact.innerText = newValue
+   basic.innerText ='Basic'
+   pro.innerText = 'Pro'
+   enterprice.innerText ='enterprice'
+
+
+   features(nullApis)
+   integrationF(nullApis)
+
+
+}
+else{
+   return nullApis
+}
+}
+
+//---- function for null ai api (features)----  
+
+function  features(fDatas) {
   
-enterprice.innerText = newValue
+   const features =  document.getElementById('li-1')
+   features.innerText = fDatas.features[1].feature_name
+   const features2 =  document.getElementById('li-2')
+   features2.innerText = fDatas.features[2].feature_name
+   const features3 =  document.getElementById('li-3')
+   features3.innerText = fDatas.features[3].feature_name 
+   const features4 =  document.getElementById('li-ex') 
+   features4.classList.remove('d-none')
+   features4.innerText = fDatas.features[4].feature_name
 
 }
 
+const integrationF = (integrationF) => {
+   if(integrationF.integrations == null ){
+      document.getElementById('li-4').innerText = 'No data Found'
+      document.getElementById('li-5').classList.add('d-none')
+      document.getElementById('li-6').classList.add('d-none')
+   }
+
+  
+else{
+   document.getElementById('li-4').innerText = 'No data Found'
+   document.getElementById('li-5').classList.remove('d-none')
+   document.getElementById('li-6').classList.remove('d-none')
+
+
+}
 
 }
