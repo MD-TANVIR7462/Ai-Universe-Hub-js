@@ -102,9 +102,9 @@ const spinerFunction = (values) =>{
 
 const acuracy=(acuPoint)=>{
   let accuracyP = document.getElementById('acuracy')
-   let cp =acuPoint.accuracy.score
+   let cp =acuPoint.accuracy.score*100
      
-      if(cp === null){
+      if(cp === null|| cp === 0){
       
          accuracyP.classList.add('d-none')
       }
