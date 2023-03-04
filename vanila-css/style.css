@@ -1,5 +1,9 @@
 body {
    font-family: 'Work Sans', sans-serif;
+   
+}
+.main{
+   background-color: rgba(188, 45, 169, 0.445);
 }
 
 .own-css{

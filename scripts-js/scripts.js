@@ -1,15 +1,15 @@
 
 const loadData = (value) => {
-   let url = [`https://openapi.programming-hero.com/api/ai/tools`]
+   let url = `https://openapi.programming-hero.com/api/ai/tools`
    fetch(url)
       .then(res => res.json())
       .then(data => callData(data.data.tools, value))
 
 }
 function callData(datas, value) {
-  
+battonSEE()
    //-- when click (show more) btn then the value perameters value will be true then if statement will works otherwise else statement will continue by defult-------- ***
-
+function battonSEE (){
    if (value === true) {
       spinerFunction(true)
       const main = document.getElementById('main-container')
@@ -19,9 +19,11 @@ function callData(datas, value) {
      
       datas = datas
    }
+ 
+  
    else {
       datas = datas.slice(0, 6)
-   }
+   }}
 
    let mainContainer = document.getElementById('main-container')
    for (const data of datas) {
@@ -74,6 +76,7 @@ function callData(datas, value) {
 //**--- arrow function for see more button-----**
 const ShowAllData = () => {
    loadData(true)
+   
 
 }
 
@@ -319,4 +322,25 @@ else{
    return'someThing went wrong'
 }
 
+}
+
+
+// ----------short by date function-------
+document.getElementById('shrt').addEventListener('click',function() {
+   const url =`https://openapi.programming-hero.com/api/ai/tools`;
+   fetch(url)
+   .then(res=>res.json())
+   .then(data => shorting(data.data))
+
+  
+})
+
+const shorting =(datas)=>{
+const sorted = datas.tools.sort(
+   (a,b) => new Date(a.published_in) - new Date(b.published_in)
+
+) ;
+
+// calling callData function with sorted value and true value
+callData(sorted,true )
 }
